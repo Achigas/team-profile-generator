@@ -29,7 +29,7 @@ test('creates an employee object', () => {
   test("gets employee role", () => {
     const employee = new Employee('Alex','25','Chig@email.com');
 
-    expect(employee.getRole()).toEqual(expect.stringContaining(employee.role));
+    expect(employee.getRole()).toEqual(expect.stringContaining('Employee'));
   });
 
   module.exports = Employee 
