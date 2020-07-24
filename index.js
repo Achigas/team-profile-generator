@@ -45,7 +45,6 @@ const promptEmployee = managerData => {
     if (!managerData.interns) {
         managerData.interns = [];
     }
-    console.log(managerData)
     return inquirer.prompt([
         {
             type: "list",
@@ -111,7 +110,6 @@ const promptEmployee = managerData => {
                     return promptEmployee(managerData)
                  })
             } else {
-                console.log(managerData)
                 return managerData
             }
         })
@@ -126,11 +124,13 @@ promptManager()
         return writeFile(pageHTML);
       })
       .then(writeFileResponse => {
-        console.log(writeFileResponse);
+        console.log("------------------------")
+        console.log(writeFileResponse.message);
         return copyFile();
       })
       .then(copyFileResponse => {
-        console.log(copyFileResponse);
+        console.log(copyFileResponse.message)
+        console.log("------------------------");
       })
       .catch(err => {
         console.log(err);

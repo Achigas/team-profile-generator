@@ -1,13 +1,18 @@
 const generateManager = Manager => {
     return `
-    <div class="card m-auto">
-    <h5 class="card-header bg-primary">${Manager.name}<br  /><br  />${Manager.role}</h5>
-    <ul class="list-group list-group-flush">
-        <li class="list-group-item">ID: ${Manager.id}</li>
-        <li class="list-group-item">Email: ${Manager.email} </li>
-        <li class="list-group-item">Office number: ${Manager.officeNumber}</li>
-    </ul>
-</div>`
+            <div class="card shadow m-2 col-3">
+                <div class="card-header bg-primary ml-0 mt-1 rounded">
+                    <h2 class= "card-title">${Manager.name}</h2>
+                    <h5 class="card-text"><i class="fas fa-coffee"></i>&nbsp;${Manager.role}</h5>
+                </div>
+                <div class="card-body bg-light my-2">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">ID: ${Manager.id}</li>
+                        <li class="list-group-item">Email: <a href="mailto:${Manager.email}">${Manager.email}</a></li>
+                        <li class="list-group-item">Office number: ${Manager.officeNumber}</li>
+                    </ul>
+                </div>
+        </div>`
 }
 
 const generateEngineers = engineersArr => {
@@ -15,13 +20,18 @@ const generateEngineers = engineersArr => {
         ${engineersArr
         .map(({ name, id, email, github, role }) => {
             return `
-            <div class="card m-auto">
-                <h5 class="card-header bg-primary">${name}<br  /><br  />${role}</h5>
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item">ID: ${id}</li>
-                    <li class="list-group-item">Email: ${email} </li>
-                    <li class="list-group-item">GitHub: ${github}</li>
-                </ul>
+            <div class="card shadow m-2 col-3">
+                <div class="card-header bg-primary ml-0 mt-1 rounded">
+                    <h2 class= "card-title">${name}</h2>
+                    <h5 class="card-text"><i class="fas fa-cogs"></i>&nbsp;${role}</h5>
+                </div>
+                <div class="card-body bg-light my-2">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">ID: ${id}</li>
+                        <li class="list-group-item">Email: <a href="mailto:${email}">${email}</a></li>
+                        <li class="list-group-item">GitHub: <a href="https://www.github.com/${github}">${github}</a></li>
+                    </ul>
+                </div>
             </div>
             `;
         })
@@ -33,14 +43,19 @@ const generateInterns = internsArr => {
         ${internsArr
             .map(({ name, id, email, school, role }) => {
                 return `
-                <div class="card m-auto">
-                    <h5 class="card-header bg-primary">${name}<br  /><br  />${role}</h5>
+                <div class="card shadow m-2 col-3">
+                <div class="card-header bg-primary ml-0 mt-1 rounded">
+                    <h2 class= "card-title">${name}</h2>
+                    <h5 class="card-text"><i class="fas fa-graduation-cap"></i>&nbsp;${role}</h5>
+                </div>
+                <div class="card-body bg-light my-2">
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item">ID: ${id}</li>
-                        <li class="list-group-item">Email: ${email} </li>
+                        <li class="list-group-item">Email: <a href="mailto:${email}">${email}</a></li>
                         <li class="list-group-item">School: ${school}</li>
                     </ul>
                 </div>
+            </div>
                 `;
             })
             .join('')}
@@ -50,7 +65,6 @@ module.exports = templateData => {
 
     // destructure page data by section
     const {interns, engineers, ...manager } = templateData;
-    console.log(templateData)
   
     return `
     <!DOCTYPE html>
@@ -68,16 +82,16 @@ module.exports = templateData => {
     </head>
   
     <body>
-        <nav class="navbar navbar-light bg-secondary text-center">
-            <span class="navbar-brand mb-0 w-100 h1 text-white">Team</span>
+        <nav class="navbar navbar-dark bg-secondary text-center">
+            <span class="navbar-brand mb-0 w-100 h1 text-white">My Team</span>
         </nav>
 
       <main class="container my-5">
-        <div class="row">
+        <div class="row justify-content-center">
        ${generateManager(manager)}
        ${generateEngineers(engineers)}
        ${generateInterns(interns)}
-       <div>
+       </div>
       </main>
     </body>
     </html>
