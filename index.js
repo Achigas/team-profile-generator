@@ -5,11 +5,11 @@ const Intern = require('./lib/Intern')
 const Manager = require('./lib/Manager');
 const { prompt } = require('inquirer');
 
-Employees = []
-
 const promptManager = () => {
+        
         return inquirer.prompt([
-         {  type: 'input',
+         {  
+            type: 'input',
             name: 'name',
             message: "What is the manager's name?"
         },
@@ -28,12 +28,20 @@ const promptManager = () => {
             name: 'officeNumber',
             message: "What is the manager's office number?"
         }
-    ]).then(({ name, id, email, officeNumber}) => {
+    ]).then(managerData  => {
+        const {name, id, email, officeNumber} = managerData
          employee = new Manager(name, id, email, officeNumber)
-    }).then (employeeData => Employees.push(employeeData))
-};
+         let role = {role: "Manager"};
+         return {...managerData, ...role}
+    //})
+})
+}
 
-const promptEmployee = () => {
+const promptEmployee = managerData => {
+    console.log(managerData)
+    if (!managerData.employees) {
+        managerData.employees = [];
+    }
     return inquirer.prompt([
         {
             type: "list",
@@ -64,11 +72,11 @@ const promptEmployee = () => {
                         name: "github",
                         message: "What is the engeineer's GitHub username?"
                     }
-                ]).then(({ name, id, email, github}) => {
-                   employee = new Engineer(name, id, email, github)
-                }).then (employeeData => {
-                    Employees.push(employeeData)
-                    return promptEmployee(Employees)
+                ]).then(employeeData => {
+                   employee = new Engineer(employeeData.name, employeeData.id, employeeData.email, employeeData.github)
+                   let role = {role: "Engineer"}
+                   managerData.employees.push({...employeeData, ...role})
+                   return promptEmployee(managerData)
                 })
             } else if (role === "Intern") {
                 return inquirer.prompt([
@@ -92,18 +100,35 @@ const promptEmployee = () => {
                         name: "school",
                         message: "Which school does the intern attend?"
                     }
-                ]).then(({ name, id, email, school}) => {
-                    employee = new Intern(name, id, email, school)
-                 }).then (employeeData => {
-                     Employees.push(employeeData)
-                     return promptEmployee(Employees)
+                ]).then(employeeData => {
+                    employee = new Intern(employeeData.name, employeeData.id, employeeData.email, employeeData.school)
+                    let role = {role: "Intern"}
+                    managerData.employees.push({...employeeData, ...role})
+                    return promptEmployee(managerData)
                  })
             } else {
-                return Employees
+                console.log(managerData)
+                return managerData
             }
         })
     }          
 
 promptManager()
-.then(promptEmployee)
+    .then(promptEmployee)
+    .then(managerData => {
+        return generatePage(managerData);
+      })
+      .then(pageHTML => {
+        return writeFile(pageHTML);
+      })
+      .then(writeFileResponse => {
+        console.log(writeFileResponse);
+        return copyFile();
+      })
+      .then(copyFileResponse => {
+        console.log(copyFileResponse);
+      })
+      .catch(err => {
+        console.log(err);
+      });
 
