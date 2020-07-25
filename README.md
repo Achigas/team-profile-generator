@@ -11,7 +11,7 @@
 * [Contact](#contact)
 
 ## General info
-This project is used to create a team portfolio wiht links to emails, git hubs, and basic employee information. 
+This project is used to create a team portfolio wiht links to emails, Githubs, and basic employee information. 
 
 ## Screenshots
 ![Example Portfolio](./images/team-portfolio.png)
@@ -26,16 +26,17 @@ run  npm install
 ## Code
 * HTML/CSS
 * JavaScript
+* Bootstrap
 * Node.js
 * Jest
 * Inquirer
 * fs
 
 ## Status
-Project is Finsihed
+Project is Finished.
 
 ## Inspiration
 Project inspired by UCLA Extension Coding Bootcamp Challenge 10. 
 
 ## Contact
-Created by Alex Chigas
+Created by Alex Chigas.
