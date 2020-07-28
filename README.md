@@ -4,6 +4,7 @@
 ## Table of contents
 * [General info](#general-info)
 * [Screenshots](#screenshots)
+* [Video Walkthrough](#video_walkthrough)
 * [Licenses](#technologies)
 * [Setup](#setup)
 * [Status](#status)
@@ -15,6 +16,9 @@ This project is used to create a team portfolio wiht links to emails, Githubs, a
 
 ## Screenshots
 ![Example Portfolio](./images/team-portfolio.png)
+
+## Video Walktthrough
+[TeamPortfolioWalkthrough](https://drive.google.com/file/d/1juJXDUmJrQ1TfC95CIzFPbOTUZKMFa24/view)
 
 ## Licenses
 * MIT
