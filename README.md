@@ -18,7 +18,7 @@ This project is used to create a team portfolio wiht links to emails, Githubs, a
 ![Example Portfolio](./images/team-portfolio.png)
 
 ## Video Walktthrough
-[TeamPortfolioWalkthrough](https://drive.google.com/file/d/1juJXDUmJrQ1TfC95CIzFPbOTUZKMFa24/view)
+[Team Portfolio Walkthrough](https://drive.google.com/file/d/1juJXDUmJrQ1TfC95CIzFPbOTUZKMFa24/view)
 
 ## Licenses
 * MIT
