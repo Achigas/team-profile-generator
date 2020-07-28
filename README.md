@@ -12,7 +12,7 @@
 * [Contact](#contact)
 
 ## General info
-This project is used to create a team portfolio wiht links to emails, Githubs, and basic employee information. 
+This project is used to create a team portfolio wiht links to emails, Githubs, and basic employee information. You will enter the manager information, then enter an engineer's information or an intern's information. 
 
 ## Screenshots
 ![Example Portfolio](./images/team-portfolio.png)
